@@ -15,11 +15,9 @@
 
 ### 1. Копіюємо файли
 ```bash
-# Копіюємо скрипт
 sudo cp scripts/worker.sh /opt/myservice/
 sudo chmod +x /opt/myservice/worker.sh
 
-# Копіюємо конфігурації systemd
 sudo cp systemd/hillei_hw.slice /etc/systemd/system/
 sudo cp systemd/myworker.service /etc/systemd/system/
 # Перезавантажуємо конфігурацію
@@ -29,7 +27,7 @@ sudo systemctl daemon-reload
 sudo systemctl start hillei_hw.slice
 sudo systemctl start myworker.service
 
-# Автозапуск
+# Вмикаємо втозапуск
 sudo systemctl enable myworker.service
 # Статус сервісу
 systemctl status myworker.service
@@ -37,7 +35,7 @@ systemctl status myworker.service
 # Статус slice
 systemctl status hillei_hw.slice
 
-# Перевірка лімітів
+# Чек лімітів
 systemctl show hillei_hw.slice | grep -E "(CPUQuota|MemoryMax)"
 
 # Моніторинг
