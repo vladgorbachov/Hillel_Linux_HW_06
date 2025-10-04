@@ -1,0 +1,15 @@
+[Unit]
+Description=Hillel Background Worker Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/myservice/worker.sh
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+Slice=hillei_hw.slice
+
+[Install]
+WantedBy=multi-user.target
